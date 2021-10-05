@@ -26,7 +26,7 @@ class _AboutPageState extends State<AboutPage> {
             Text(arguments['phone']),
             ElevatedButton(
                 onPressed: () {
-                  Navigator.pop(context, 'About Page');
+                  Navigator.pop(context, 'Sent BY About Page');
                 },
                 child: const Text("Home")),
             ElevatedButton(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my01_app/pages/home_stack.dart';
-import 'package:my01_app/pages/product_stack.dart';
+import 'package:my01_app/pages/stacks/home_stack.dart';
+import 'package:my01_app/pages/stacks/product_stack.dart';
 
 void main() {
   runApp(const MyApp());
