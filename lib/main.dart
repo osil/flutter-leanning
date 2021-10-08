@@ -16,6 +16,8 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.purple,
+        //brightness: Brightness.light,
+        //primaryColor: Colors.blueGrey
       ),
       // home: const HomePage(title: 'Smart RMU'),
       initialRoute: '/',

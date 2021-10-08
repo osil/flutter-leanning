@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:my01_app/pages/detail_page.dart';
 
 class MenuItem extends StatefulWidget {
   MenuItem({Key? key}) : super(key: key);
@@ -40,6 +39,7 @@ class _MenuItemState extends State<MenuItem> {
                     ? true
                     : false,
             title: const Text('สินค้า'),
+            trailing: const Icon(Icons.chevron_right),
             onTap: () {
               Navigator.of(context, rootNavigator: true)
                   .pushNamedAndRemoveUntil('/productstack', (route) => false);

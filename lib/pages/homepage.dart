@@ -20,33 +20,89 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: MenuItem(),
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Logo(),
-            const Text("Smart RMU"),
-            Text("Form About Page Is ${formAboutPage ?? ""}"),
-            ElevatedButton(
-              child: const Text("About"),
-              onPressed: () async {
-                formAboutPage = await Navigator.pushNamed(
-                    context, 'homestack/about', arguments: {
-                  'email': 'tttt@fmail.com',
-                  'phone': '08888888'
-                });
-                setState(() {
-                  formAboutPage = formAboutPage;
-                });
-              },
-            )
-          ],
+        drawer: MenuItem(),
+        appBar: AppBar(
+          title: Text(widget.title),
         ),
-      ),
-    );
+        body: Container(
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('assets/images/bg.jpeg'),
+                    fit: BoxFit.cover)),
+            child: GridView.count(
+              primary: false,
+              padding: const EdgeInsets.all(20),
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+              crossAxisCount: 2,
+              children: <Widget>[
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const <Widget>[
+                      Icon(Icons.business, size: 80, color: Colors.purple),
+                      Text(
+                        'Business',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ],
+                  ),
+                  color: Colors.white70,
+                ),
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const <Widget>[
+                      Icon(Icons.map, size: 80, color: Colors.purple),
+                      Text(
+                        'Map',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ],
+                  ),
+                  color: Colors.white70,
+                ),
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const <Widget>[
+                      Icon(Icons.camera_alt, size: 80, color: Colors.purple),
+                      Text(
+                        'Camera',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ],
+                  ),
+                  color: Colors.white70,
+                ),
+                GestureDetector(
+                  onTap: () async {
+                    formAboutPage = await Navigator.pushNamed(
+                        context, 'homestack/about', arguments: {
+                      'email': 'tttt@fmail.com',
+                      'phone': '08888888'
+                    });
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(8),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const <Widget>[
+                        Icon(Icons.person_pin, size: 80, color: Colors.purple),
+                        Text(
+                          'About',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ],
+                    ),
+                    color: Colors.white70,
+                  ),
+                )
+              ],
+            )));
   }
 }
