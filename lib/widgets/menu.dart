@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my01_app/widgets/logo.dart';
 
 class MenuItem extends StatefulWidget {
   MenuItem({Key? key}) : super(key: key);
@@ -15,11 +16,23 @@ class _MenuItemState extends State<MenuItem> {
         // Important: Remove any padding from the ListView.
         padding: EdgeInsets.zero,
         children: [
-          const DrawerHeader(
-            decoration: BoxDecoration(
+          DrawerHeader(
+            decoration: const BoxDecoration(
               color: Colors.purple,
             ),
-            child: Text('Main Menu'),
+            child: Column(
+              children: const <Widget>[
+                Image(
+                  image: AssetImage('assets/images/rmu.png'),
+                  fit: BoxFit.cover,
+                  width: 120,
+                ),
+                Text(
+                  "มหาวิทยาลัยราชภัฏมหาสารคาม",
+                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold,color: Colors.white),
+                )
+              ],
+            ),
           ),
           ListTile(
             leading: const Icon(Icons.home),

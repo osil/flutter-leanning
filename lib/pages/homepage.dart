@@ -1,7 +1,6 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import 'package:my01_app/widgets/logo.dart';
 import 'package:my01_app/widgets/menu.dart';
 
 class HomePage extends StatefulWidget {
@@ -36,19 +35,24 @@ class _HomePageState extends State<HomePage> {
               mainAxisSpacing: 10,
               crossAxisCount: 2,
               children: <Widget>[
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const <Widget>[
-                      Icon(Icons.business, size: 80, color: Colors.purple),
-                      Text(
-                        'Business',
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ],
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, 'homestack/company');
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(8),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const <Widget>[
+                        Icon(Icons.business, size: 80, color: Colors.purple),
+                        Text(
+                          'มรม.',
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ],
+                    ),
+                    color: Colors.white70,
                   ),
-                  color: Colors.white70,
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
@@ -57,7 +61,7 @@ class _HomePageState extends State<HomePage> {
                     children: const <Widget>[
                       Icon(Icons.map, size: 80, color: Colors.purple),
                       Text(
-                        'Map',
+                        'แผนที่',
                         style: TextStyle(fontSize: 20),
                       ),
                     ],
@@ -71,7 +75,7 @@ class _HomePageState extends State<HomePage> {
                     children: const <Widget>[
                       Icon(Icons.camera_alt, size: 80, color: Colors.purple),
                       Text(
-                        'Camera',
+                        'กล้อง',
                         style: TextStyle(fontSize: 20),
                       ),
                     ],
@@ -85,18 +89,20 @@ class _HomePageState extends State<HomePage> {
                       'email': 'tttt@fmail.com',
                       'phone': '08888888'
                     });
+                    setState(() {
+                      formAboutPage = formAboutPage;
+                    });
                   },
                   child: Container(
                     padding: const EdgeInsets.all(8),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const <Widget>[
-                        Icon(Icons.person_pin, size: 80, color: Colors.purple),
-                        Text(
-                          'About',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 20),
-                        ),
+                      children: <Widget>[
+                        const Icon(Icons.person_pin,
+                            size: 80, color: Colors.purple),
+                        Text("เกี่ยวกับ ${formAboutPage ?? ""}",
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(fontSize: 20))
                       ],
                     ),
                     color: Colors.white70,
