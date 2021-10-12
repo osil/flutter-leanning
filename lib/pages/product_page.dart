@@ -15,6 +15,7 @@ class ProductPage extends StatefulWidget {
 
 class _ProductPageState extends State<ProductPage> {
   List<Datum> course = [];
+  bool isLoading = true;
 
   _getProduct() async {
     var url = Uri.https('api.codingthailand.com', '/api/course');
@@ -26,6 +27,7 @@ class _ProductPageState extends State<ProductPage> {
 
       setState(() {
         course = product.data;
+        isLoading = false;
       });
     } else {
       print("error api ${response.statusCode}");
@@ -48,26 +50,31 @@ class _ProductPageState extends State<ProductPage> {
       appBar: AppBar(
         title: const Text("Course"),
       ),
-      body: ListView.separated(
-          itemBuilder: (BuildContext context, int index) {
-            return ListTile(
-              leading: Container(
-                height: 80,
-                width: 80,
-                decoration: BoxDecoration(
-                  shape: BoxShape.rectangle,
-                  image: DecorationImage(
-                      image: NetworkImage(course[index].picture)),
-                ),
+      body: isLoading == true
+          ? const Center(
+              child: CircularProgressIndicator(
               ),
-              title: Text(course[index].title),
-              subtitle: Text(course[index].detail),
-              trailing: const Icon(Icons.arrow_right_sharp),
-            );
-          },
-          separatorBuilder: (BuildContext context, int index) =>
-              const Divider(),
-          itemCount: course.length),
+            )
+          : ListView.separated(
+              itemBuilder: (BuildContext context, int index) {
+                return ListTile(
+                  leading: Container(
+                    height: 80,
+                    width: 80,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.rectangle,
+                      image: DecorationImage(
+                          image: NetworkImage(course[index].picture)),
+                    ),
+                  ),
+                  title: Text(course[index].title),
+                  subtitle: Text(course[index].detail),
+                  trailing: const Icon(Icons.arrow_right_sharp),
+                );
+              },
+              separatorBuilder: (BuildContext context, int index) =>
+                  const Divider(),
+              itemCount: course.length),
     );
   }
 }
