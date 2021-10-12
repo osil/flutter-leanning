@@ -51,7 +51,7 @@ class _MenuItemState extends State<MenuItem> {
                 ModalRoute.of(context)!.settings.name == 'productstack/product'
                     ? true
                     : false,
-            title: const Text('สินค้า'),
+            title: const Text('หลักสูตร'),
             trailing: const Icon(Icons.chevron_right),
             onTap: () {
               Navigator.of(context, rootNavigator: true)
