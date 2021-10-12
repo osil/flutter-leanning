@@ -1,7 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import 'package:my01_app/models/product.dart';
+//import 'package:my01_app/models/product.dart';
 import 'package:my01_app/widgets/menu.dart';
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
@@ -14,19 +14,19 @@ class ProductPage extends StatefulWidget {
 }
 
 class _ProductPageState extends State<ProductPage> {
-  List<Datum> course = [];
+  List<dynamic> course = [];
   bool isLoading = true;
 
   _getProduct() async {
+    
     var url = Uri.https('api.codingthailand.com', '/api/course');
     var response = await http.get(url);
     if (response.statusCode == 200) {
       //print(response.body);
-      final Product product =
-          Product.fromJson(convert.jsonDecode(response.body));
+      final Map<String, dynamic> product = convert.jsonDecode(response.body);
 
       setState(() {
-        course = product.data;
+        course = product['data'];
         isLoading = false;
       });
     } else {
@@ -63,17 +63,17 @@ class _ProductPageState extends State<ProductPage> {
                     decoration: BoxDecoration(
                       shape: BoxShape.rectangle,
                       image: DecorationImage(
-                          image: NetworkImage(course[index].picture)),
+                          image: NetworkImage(course[index]['picture'])),
                     ),
                   ),
-                  title: Text(course[index].title),
-                  subtitle: Text(course[index].detail),
+                  title: Text(course[index]['title']),
+                  subtitle: Text(course[index]['detail']),
                   trailing: const Icon(Icons.arrow_right_sharp),
                   onTap: () {
                     Navigator.pushNamed(context, 'productstack/detail',
                       arguments: {
-                        'id':course[index].id,
-                        'title':course[index].title
+                        'id':course[index]['id'],
+                        'title':course[index]['title']
                       }
                     );
                   },
