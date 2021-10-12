@@ -52,8 +52,7 @@ class _ProductPageState extends State<ProductPage> {
       ),
       body: isLoading == true
           ? const Center(
-              child: CircularProgressIndicator(
-              ),
+              child: CircularProgressIndicator(),
             )
           : ListView.separated(
               itemBuilder: (BuildContext context, int index) {
@@ -70,6 +69,14 @@ class _ProductPageState extends State<ProductPage> {
                   title: Text(course[index].title),
                   subtitle: Text(course[index].detail),
                   trailing: const Icon(Icons.arrow_right_sharp),
+                  onTap: () {
+                    Navigator.pushNamed(context, 'productstack/detail',
+                      arguments: {
+                        'id':course[index].id,
+                        'title':course[index].title
+                      }
+                    );
+                  },
                 );
               },
               separatorBuilder: (BuildContext context, int index) =>
