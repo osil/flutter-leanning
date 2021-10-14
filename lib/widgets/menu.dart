@@ -58,6 +58,19 @@ class _MenuItemState extends State<MenuItem> {
                   .pushNamedAndRemoveUntil('/productstack', (route) => false);
             },
           ),
+          ListTile(
+            leading: const Icon(Icons.podcasts_sharp),
+            selected:
+                ModalRoute.of(context)!.settings.name == 'newstack/news'
+                    ? true
+                    : false,
+            title: const Text('ข่าวสาร'),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () {
+              Navigator.of(context, rootNavigator: true)
+                  .pushNamedAndRemoveUntil('/newstack', (route) => false);
+            },
+          ),
         ],
       ),
     );
