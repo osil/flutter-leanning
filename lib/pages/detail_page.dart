@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
-import 'package:my01_app/models/detail_product.dart';
+//import 'package:my01_app/models/detail_product.dart';
 import 'package:intl/intl.dart';
 
 class DetailPage extends StatefulWidget {
@@ -14,7 +14,7 @@ class DetailPage extends StatefulWidget {
 class _DetailPageState extends State<DetailPage> {
   // ignore: prefer_typing_uninitialized_variables
   var course;
-  List<Datum> chapter = [];
+  List<dynamic> chapter = [];
   bool isLoading = true;
   final fNumber = NumberFormat("#,###");
 
@@ -23,13 +23,16 @@ class _DetailPageState extends State<DetailPage> {
     var response = await http.get(url);
     if (response.statusCode == 200) {
       //print(response.body);
-      Detail detail = Detail.fromJson(convert.jsonDecode(response.body));
+      Map<String, dynamic> detail = convert.jsonDecode(response.body);
 
       setState(() {
-        chapter = detail.data;
+        chapter = detail['data'];
         isLoading = false;
       });
     } else {
+      setState(() {
+        isLoading = false;
+      });
       // ignore: avoid_print
       print("error api ${response.statusCode}");
     }
@@ -61,11 +64,11 @@ class _DetailPageState extends State<DetailPage> {
           : ListView.separated(
               itemBuilder: (BuildContext context, int index) {
                 return ListTile(
-                  title: Text(chapter[index].chTitle),
-                  subtitle: Text(chapter[index].chDateadd.toString()),
+                  title: Text(chapter[index]['ch_title']),
+                  subtitle: Text(chapter[index]['ch_dateadd'].toString()),
                   trailing: Chip(
                     avatar: const Icon(Icons.remove_red_eye_outlined),
-                    label: Text(fNumber.format(chapter[index].chView)),
+                    label: Text(fNumber.format(chapter[index]['ch_view'])),
                     backgroundColor: Colors.purpleAccent,
                   ),
                 );
