@@ -18,7 +18,6 @@ class _ProductPageState extends State<ProductPage> {
   bool isLoading = true;
 
   _getProduct() async {
-    
     var url = Uri.https('api.codingthailand.com', '/api/course');
     var response = await http.get(url);
     if (response.statusCode == 200) {
@@ -30,6 +29,9 @@ class _ProductPageState extends State<ProductPage> {
         isLoading = false;
       });
     } else {
+      setState(() {
+        isLoading = false;
+      });
       print("error api ${response.statusCode}");
     }
   }
@@ -71,11 +73,10 @@ class _ProductPageState extends State<ProductPage> {
                   trailing: const Icon(Icons.arrow_right_sharp),
                   onTap: () {
                     Navigator.pushNamed(context, 'productstack/detail',
-                      arguments: {
-                        'id':course[index]['id'],
-                        'title':course[index]['title']
-                      }
-                    );
+                        arguments: {
+                          'id': course[index]['id'],
+                          'title': course[index]['title']
+                        });
                   },
                 );
               },
