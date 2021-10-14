@@ -34,7 +34,6 @@ class _RoomPageState extends State<RoomPage> {
     super.initState();
     _getData();
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
