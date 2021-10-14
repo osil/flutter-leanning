@@ -107,7 +107,26 @@ class _HomePageState extends State<HomePage> {
                     ),
                     color: Colors.white70,
                   ),
-                )
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, 'homestack/room');
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(8),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const <Widget>[
+                        Icon(Icons.room_preferences_sharp, size: 80, color: Colors.purple),
+                        Text(
+                          'ห้องประชุม',
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ],
+                    ),
+                    color: Colors.white70,
+                  ),
+                ),
               ],
             )));
   }

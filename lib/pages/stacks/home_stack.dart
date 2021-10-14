@@ -3,6 +3,7 @@ import 'package:my01_app/pages/about_page.dart';
 import 'package:my01_app/pages/company_page.dart';
 import 'package:my01_app/pages/homepage.dart';
 import 'package:my01_app/pages/contact_page.dart';
+import 'package:my01_app/pages/room_page.dart';
 
 class HomeStack extends StatefulWidget {
   HomeStack({Key? key}) : super(key: key);
@@ -31,6 +32,9 @@ class _HomeStackState extends State<HomeStack> {
             break;
           case 'homestack/company':
             builder = (BuildContext context) => CompanyPage();
+            break;
+          case 'homestack/room':
+            builder = (BuildContext context) => RoomPage();
             break;
           default:
             throw Exception('Invalid route: ${settings.name}');
