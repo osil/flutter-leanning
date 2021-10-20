@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my01_app/pages/detail_page.dart';
 import 'package:my01_app/pages/news_page.dart';
+import 'package:my01_app/pages/web_view_page.dart';
 
 class NewStack extends StatefulWidget {
   NewStack({Key? key}) : super(key: key);
@@ -20,8 +20,8 @@ class _NewStackState extends State<NewStack> {
           case 'newstack/news':
             builder = (BuildContext context) => NewsPage();
             break;
-          case 'newstack/detail':
-            builder = (BuildContext context) => DetailPage();
+          case 'newstack/webview':
+            builder = (BuildContext context) => WebViewPage();
             break;
 
           default:
