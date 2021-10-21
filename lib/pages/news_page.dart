@@ -4,7 +4,6 @@ import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:my01_app/widgets/menu.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 
 class NewsPage extends StatefulWidget {
   NewsPage({Key? key}) : super(key: key);
@@ -46,13 +45,15 @@ class _NewsPageState extends State<NewsPage> {
           page = ++page;
           _getData();
         });
+        _refreshController.loadComplete();
       }
     } else {
+      print("ไม่มีข่าวแล้ว");
       _refreshController.loadNoData();
       _refreshController.resetNoData();
     }
 
-    _refreshController.loadComplete();
+    
   }
 
   void _getData() async {
@@ -123,6 +124,9 @@ class _NewsPageState extends State<NewsPage> {
                       body = const Text("Load Failed!Click retry!");
                     } else if (mode == LoadStatus.canLoading) {
                       body = const Text("release to load more");
+                    }else if(mode == LoadStatus.noMore){
+                      body = const Text("ไม่มีข่าวสารแล้ว");
+                    
                     } else {
                       body = const Text("No more Data");
                     }

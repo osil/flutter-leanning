@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my01_app/pages/login_page.dart';
 import 'package:my01_app/pages/stacks/home_stack.dart';
 import 'package:my01_app/pages/stacks/new_stack.dart';
 import 'package:my01_app/pages/stacks/product_stack.dart';
@@ -23,7 +24,8 @@ class MyApp extends StatelessWidget {
       // home: const HomePage(title: 'Smart RMU'),
       initialRoute: '/',
       routes: {
-        '/': (context) => HomeStack(),
+        //'/': (context) => HomeStack(),
+        '/': (context) => LoginPage(),
         '/productstack': (context) => ProductStack(),
         '/newstack': (context) => NewStack()
 
