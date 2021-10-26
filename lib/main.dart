@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my01_app/pages/login_page.dart';
+import 'package:my01_app/pages/regis_page.dart';
 import 'package:my01_app/pages/stacks/home_stack.dart';
 import 'package:my01_app/pages/stacks/new_stack.dart';
 import 'package:my01_app/pages/stacks/product_stack.dart';
@@ -26,6 +27,8 @@ class MyApp extends StatelessWidget {
       routes: {
         //'/': (context) => HomeStack(),
         '/': (context) => LoginPage(),
+        '/regis': (context) => RegisPage(),
+        '/homestack': (context) => HomeStack(),
         '/productstack': (context) => ProductStack(),
         '/newstack': (context) => NewStack()
 
